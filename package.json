@@ -1,0 +1,52 @@
+{
+  "name": "@argszero/dsh-web-fetch-proxy-doctor",
+  "version": "0.1.0",
+  "description": "Turn a bare WEB_BLOCKED_URL from web_fetch into an attributable diagnosis: no proxy policy installed, policy installed but the URL bypassed, or blocked by the literal-address rule.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "cordis",
+    "deepseek-harness",
+    "web-fetch",
+    "proxy"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/argszero/dsh-web-fetch-proxy-doctor.git"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-http-proxy": "^0.2.1-rc.2",
+    "@deepseek-ai/dsh-tools": "^0.2.1-rc.2"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.5",
+    "@deepseek-ai/dsh-http-proxy": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-web": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-web-fetch-http": "0.2.1-rc.2"
+  },
+  "scripts": {
+    "test": "node --test --test-timeout=30000 test/*.spec.mjs",
+    "smoke": "node scripts/mount-smoke.mjs",
+    "mutation": "node scripts/inject-defects.mjs"
+  }
+}
